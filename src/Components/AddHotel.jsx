@@ -2,7 +2,7 @@ import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } 
 import InputAdornment from '@mui/material/InputAdornment';
 import React, { useState } from 'react';
 
-import hotelServices from "../Service/HotelServices";
+import { doAdd } from "../Service/HotelServices";
 import Loading from "./Loading";
 import Output from "./Output";
 const AddHotel = (props) => {
@@ -53,7 +53,7 @@ const AddHotel = (props) => {
         setLoadingFlag(true)
         setTimeout(()=>{
             setLoadingFlag(false)
-            hotelServices.doAdd(insertData).then((res)=>{
+            doAdd(insertData).then((res)=>{
                 if (res.data === "success"){
                     setMsg("Successfully added the Hotel information.")
                     setRightFlag(true)

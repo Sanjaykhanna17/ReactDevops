@@ -1,7 +1,7 @@
 import { Button, Dialog, DialogActions, DialogContent, DialogTitle, TextField } from "@mui/material";
 import InputAdornment from '@mui/material/InputAdornment';
 import { React, useEffect, useState } from 'react';
-import hotelServices from "../Service/HotelServices";
+import { doGet, doUpdate } from "../Service/HotelServices";
 import Loading from "./Loading";
 import Output from "./Output";
 
@@ -20,7 +20,9 @@ const UpdateHotel = (props) => {
     })
 
     useEffect(() => {
-        hotelServices.doGet(props.id).then((res) => { setData(res.data) }).catch((err) => console.log(err))
+        doGet(props.id).then((res) => 
+        { setData(res.data) })
+        .catch((err) => console.log(err))
     }, [props.id])
 
     const [loadingFlag, setLoadingFlag] = useState(false)
@@ -33,7 +35,7 @@ const UpdateHotel = (props) => {
         setLoadingFlag(true)
         setTimeout(()=>{
             setLoadingFlag(false)
-            hotelServices.doUpdate(data).then((res)=>{
+            doUpdate(data).then((res)=>{
                 if (res.data === "success"){
                     setMsg("Successfully Updated the Hotel information.")
                     setRightFlag(true)

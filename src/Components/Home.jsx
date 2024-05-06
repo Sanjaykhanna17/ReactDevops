@@ -1,6 +1,6 @@
 import { Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
-import hotelServices from '../Service/HotelServices';
+import { doGetAll } from '../Service/HotelServices';
 import AddHotel from './AddHotel';
 import DeleteHotel from './DeleteHotel';
 import UpdateHotel from './UpdateHotel';
@@ -17,18 +17,18 @@ function Home() {
     });
 
     useEffect(() => {
-        hotelServices.doGetAll().then((res) => { setHotelData(res.data) })
+        doGetAll().then((res) => { setHotelData(res.data) })
             .catch((err) => console.log("Error : " + err));
     },[])
 
     return (
         <div>
             <div className='container-fluid container-fluid-fixed-top pt-3'>
-                <div className="card card-body w-50 mx-auto text-center  h1" id="title">Hotel Management System</div>
+                <div className="card card-body w-50 mx-auto text-center  h1" title="title">Hotel Management System</div>
             </div>
             <section className="container container-lg text-center">
                 <div className="card card-lg bg-body mt-5 shadow-lg p-2 mx-auto">
-                    <div className="card-title h1">Hotel List</div>
+                    <div className="card-title h1" title="pageTitle">Hotel List</div>
                     <div className="card-body">
                         <div className="container row">
                             <div className="col-6" style={{ "textAlign": "left" }}>

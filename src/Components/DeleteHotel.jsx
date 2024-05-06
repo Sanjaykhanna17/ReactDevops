@@ -1,6 +1,6 @@
 import { Alert, Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 import { React, useState } from 'react';
-import hotelServices from '../Service/HotelServices';
+import { doDelete } from "../Service/HotelServices";
 import Loading from "./Loading";
 import Output from "./Output";
 
@@ -18,7 +18,7 @@ const DeleteHotel = (props) => {
         setLoadingFlag(true)
         setTimeout(()=>{
             setLoadingFlag(false)
-            hotelServices.doDelete(props.id).then((res)=>{
+            doDelete(props.id).then((res)=>{
                 if (res.data === "success"){
                     setMsg("Successfully Deleted the Hotel information.")
                     setRightFlag(true)
