@@ -2,6 +2,7 @@ import '@testing-library/jest-dom';
 import { render, screen } from '@testing-library/react';
 import Home from '../Components/Home';
 
+
     test('should render the home page', () => {
         render(<Home />)
         expect(screen.getByTitle("title")).toBeInTheDocument();
